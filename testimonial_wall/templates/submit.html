@@ -1,0 +1,10 @@
+<!doctype html>
+<html><body>
+  <h1>Leave a testimonial for {{ project.name }}</h1>
+  <form method="post">{% csrf_token %}
+    <label>Name <input name="author_name" /></label><br/>
+    <label>Rating <input name="rating" type="number" min="1" max="5" /></label><br/>
+    <label>Testimonial<br/><textarea name="content_text"></textarea></label><br/>
+    <button type="submit">Submit</button>
+  </form>
+</body></html>

@@ -1,0 +1,20 @@
+<!doctype html>
+<html><body>
+  <div class="tw-grid">
+    {% for t in testimonials %}
+      <div class="tw-card" style="border:1px solid #eee;padding:12px;margin:8px;border-radius:8px;">
+        {% if t.author_name %}<strong>{{ t.author_name }}</strong><br/>{% endif %}
+        {% if t.rating %}<span>⭐ {{ t.rating }}/5</span><br/>{% endif %}
+        {% if t.media_type == 'text' %}
+          <p>{{ t.content_text|linebreaks }}</p>
+        {% elif t.media_type == 'video' %}
+          <video src="{{ t.media_url }}" controls style="max-width:100%"></video>
+        {% elif t.media_type == 'audio' %}
+          <audio src="{{ t.media_url }}" controls></audio>
+        {% endif %}
+      </div>
+    {% empty %}
+      <p>No testimonials yet.</p>
+    {% endfor %}
+  </div>
+</body></html>
