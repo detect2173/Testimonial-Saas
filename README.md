@@ -7,7 +7,7 @@ What this repo contains
 - Embed script: /embed/<slug>.js (injects an iframe)
 - Django Admin to moderate testimonials
 
-Quick start (Windows PowerShell)
+One-minute local run (Windows PowerShell)
 1) Create and activate a virtualenv (recommended):
    python -m venv .venv
    .\.venv\Scripts\Activate.ps1
@@ -15,20 +15,21 @@ Quick start (Windows PowerShell)
 2) Install dependencies:
    pip install -r testimonial_wall\requirements.txt
 
-3) Run migrations and create a superuser:
+3) Migrate and seed demo data:
    cd testimonial_wall
    python manage.py migrate
-   python manage.py createsuperuser
+   python manage.py seed_demo
+   # A demo superuser 'demo' with password 'demo1234' and a Project with slug 'demo' will be created
 
 4) Run the dev server:
    python manage.py runserver
 
-5) In Django Admin (http://127.0.0.1:8000/admin/), create a Project with a unique slug and yourself as owner. Optionally create a WallConfig for it.
-
-6) Test the public endpoints (replace my-slug):
-   - Submit form: http://127.0.0.1:8000/t/my-slug/submit
-   - Wall:       http://127.0.0.1:8000/t/my-slug/wall
-   - Embed JS:   http://127.0.0.1:8000/embed/my-slug.js
+5) Test endpoints immediately:
+   - Health:     http://127.0.0.1:8000/healthz
+   - Submit:     http://127.0.0.1:8000/t/demo/submit
+   - Wall:       http://127.0.0.1:8000/t/demo/wall
+   - Embed JS:   http://127.0.0.1:8000/embed/demo.js
+   - Admin:      http://127.0.0.1:8000/admin  (login as demo/demo1234)
 
 Notes
 - This is an MVP starter (SQLite, DEBUG on). For production, set env vars, use Postgres, and configure storage for media.

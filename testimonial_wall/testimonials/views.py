@@ -44,3 +44,7 @@ def embed_script(request, slug):
     })();
     """
     return HttpResponse(js, content_type="application/javascript")
+
+
+def healthz(request):
+    return HttpResponse("ok")
